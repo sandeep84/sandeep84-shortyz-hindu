@@ -100,7 +100,7 @@ public class THCDownloader extends AbstractDownloader {
     		for (int j=0; j<NUM_CELLS; j++) {
             	for (int i=0; i<NUM_CELLS; i++) {
         			if (boxes[j][i] != null) {
-        				String pattern = "^" + boxes[j][i].getClueNumber() + "(.*)";
+        				String pattern = "^-?" + boxes[j][i].getClueNumber() + "(.*)";
 	        			if (boxes[j][i].isAcross()) {
 	        				rawClues[rawClueIdx] = this.acrossClues.get(acClueIdx++);
 	        				rawClues[rawClueIdx] = rawClues[rawClueIdx].replaceAll(pattern, "$1");
@@ -135,7 +135,7 @@ public class THCDownloader extends AbstractDownloader {
 		try {
 			String html_string = this.getContent(this.baseUrl + "?date=" + sdf.format(date));
 			
-            Pattern p = Pattern.compile("<a\\s*href=\"(.*?)\"\\s*>The Hindu Crossword.*</a>");
+            Pattern p = Pattern.compile("<h3>MISCELLANEOUS</h3>.*<a\\s*href=\"(.*?)\"\\s*>The Hindu Crossword.*</a>", Pattern.MULTILINE | Pattern.DOTALL);
             Matcher m = p.matcher(html_string);
             if (m.find()) {
             	return m.group(1);
@@ -266,7 +266,7 @@ public class THCDownloader extends AbstractDownloader {
         		} else if (clue.contains("Down")) {
         			inDown = true; inAcross = false;
         		} else if ((inAcross || inDown) && (!clue.equals(""))) {
-        			Pattern clue_p = Pattern.compile("^\\d+.*\\(.*\\)$");
+        			Pattern clue_p = Pattern.compile("^-?\\d+.*\\(.*\\)$");
         			Matcher clue_m = clue_p.matcher(clue);
         			while (!clue_m.find()) {
         				m.find();
