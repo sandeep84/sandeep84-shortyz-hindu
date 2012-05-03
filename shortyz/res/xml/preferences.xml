@@ -166,6 +166,11 @@
 			android:defaultValue="false"
 			android:summary="Ron &quot;Kegler&quot; Sweet's Cryptic Archive\nhttp://www.lafn.org/~keglerron/kegler.html\n(Please Read the help item below)"
 			android:key="scrapeKegler" />
+		<CheckBoxPreference
+			android:title="The Hindu Crossword"
+			android:defaultValue="false"
+			android:summary="The Hindu Crossword\nhttp://thehindu.com/\n(Please Read the help item below)"
+			android:key="downloadTHC" />
 		<Preference
 		 	android:title="About These Sources" 
 		 	android:key="aboutScrapes" />
