@@ -248,7 +248,7 @@ public class THCDownloader extends AbstractDownloader {
             }
             
             //p = Pattern.compile("<img\\s*src=\"(.*?)\"\\s*class=\"main-image\".*?>");
-            p = Pattern.compile("<img\\s*src=\"(.*?CROSS_SOLL_.*?)\".*?title=\"\"/>");
+            p = Pattern.compile("<img\\s*src=\"(.*?CROSS_SOL.*?)\".*?title=\"\"/>");
             m = p.matcher(html_string);
             while (m.find()) {
             	imageLink = m.group(1);
