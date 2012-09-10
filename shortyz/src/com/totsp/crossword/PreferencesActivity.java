@@ -13,11 +13,13 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 
 import com.totsp.crossword.shortyz.R;
+import com.totsp.crossword.versions.AndroidVersionUtils;
 
 
 public class PreferencesActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidVersionUtils.Factory.getInstance().holographic(this);
         addPreferencesFromResource(R.xml.preferences);
 
         Preference release = (Preference) findPreference("releaseNotes");

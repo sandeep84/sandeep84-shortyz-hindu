@@ -24,6 +24,7 @@ public class ShortyzActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.utils.holographic(this);
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {

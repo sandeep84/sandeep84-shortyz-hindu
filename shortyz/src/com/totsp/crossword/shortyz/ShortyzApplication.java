@@ -119,6 +119,7 @@ public class ShortyzApplication extends Application {
 		case 11:
 		case 13:
 			return true;
+		case 15:
 		case 14:
 			int pixels = metrics.heightPixels > metrics.widthPixels ? metrics.heightPixels : metrics.widthPixels;
 			float dpi = metrics.xdpi > metrics.ydpi ? metrics.xdpi : metrics.ydpi;

@@ -248,7 +248,8 @@ public class THCDownloader extends AbstractDownloader {
             }
             
             //p = Pattern.compile("<img\\s*src=\"(.*?)\"\\s*class=\"main-image\".*?>");
-            p = Pattern.compile("<img\\s*src=\"(.*?CROSS_SOL.*?)\".*?title=\"\"/>");
+            //p = Pattern.compile("<img\\s*src=\"(.*?CROSS_SOL.*?)\".*?title=\"\"/>");
+            p = Pattern.compile("<img\\s*src=\"(.*?CROSS.*?)\".*?title=\"\"/>");
             m = p.matcher(html_string);
             while (m.find()) {
             	imageLink = m.group(1);
@@ -267,7 +268,8 @@ public class THCDownloader extends AbstractDownloader {
         		} else if (clue.contains("Down")) {
         			inDown = true; inAcross = false;
         		} else if ((inAcross || inDown) && (!clue.equals(""))) {
-        			Pattern clue_p = Pattern.compile("^-?\\d+.*\\(.*\\)$");
+        			//Pattern clue_p = Pattern.compile("^-?\\d+.*\\(.*\\)$");
+        			Pattern clue_p = Pattern.compile("^-?\\d+.*$");
         			Matcher clue_m = clue_p.matcher(clue);
         			while (!clue_m.find()) {
         				m.find();

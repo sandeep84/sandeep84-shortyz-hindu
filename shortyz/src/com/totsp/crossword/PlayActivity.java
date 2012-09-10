@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import android.content.res.Configuration;
 
@@ -19,6 +20,7 @@ import android.net.Uri;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -161,8 +163,10 @@ public class PlayActivity extends ShortyzActivity {
             .getMetrics(metrics);
         try {
             if (!prefs.getBoolean("showTimer", false)) {
-                if (android.os.Build.VERSION.SDK_INT < 13) {
+                if (android.os.Build.VERSION.SDK_INT < 11) {
                     requestWindowFeature(Window.FEATURE_NO_TITLE);
+                } else {
+                    // For SDK11 and above, we'll use a custom ActionBar instead.
                 }
             } else {
                 requestWindowFeature(Window.FEATURE_PROGRESS);
@@ -171,7 +175,6 @@ public class PlayActivity extends ShortyzActivity {
             e.printStackTrace();
         }
 
-        utils.holographic(this);
         this.configuration = getBaseContext()
                                  .getResources()
                                  .getConfiguration();
@@ -241,6 +244,7 @@ public class PlayActivity extends ShortyzActivity {
 
             setContentView(R.layout.play);
 
+            
             int keyboardType = "CONDENSED_ARROWS".equals(prefs.getString("keyboardType", "")) ? R.xml.keyboard_dpad
                                                                                               : R.xml.keyboard;
             Keyboard keyboard = new Keyboard(this, keyboardType);
@@ -319,7 +323,11 @@ public class PlayActivity extends ShortyzActivity {
                 });
 
             this.clue = (TextView) this.findViewById(R.id.clueLine);
-            if(clue.getVisibility() != View.GONE && android.os.Build.VERSION.SDK_INT >= 14){
+            // Custom ActionBar available only for Honeycomb and above. 
+            // But honeycomb style ActionBar takes too much space. So just skip it. And hide the default ActionBar
+            getActionBar().hide();
+            boolean skipCustomActionBar = true;
+            if(!skipCustomActionBar && clue.getVisibility() != View.GONE && android.os.Build.VERSION.SDK_INT >= 11){
             	clue.setVisibility(View.GONE);
             	clue = (TextView) utils.onActionBarCustom(this, R.layout.clue_line_only).findViewById(R.id.clueLine);
             }
