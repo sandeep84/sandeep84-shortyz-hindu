@@ -43,7 +43,7 @@ public class ShortyzApplication extends Application {
 				writer.println("VERSION INT: "
 						+ android.os.Build.VERSION.SDK_INT);
 				writer.println("VERSION STRING: "
-						+ android.os.Build.VERSION.SDK);
+						+ android.os.Build.VERSION.SDK_INT);
 				writer.println("VERSION RELEASE: "
 						+ android.os.Build.VERSION.RELEASE);
 				writer.close();

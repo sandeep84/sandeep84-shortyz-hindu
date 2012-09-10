@@ -8,6 +8,7 @@ import com.totsp.crossword.puz.Playboard.Position;
 
 public class PuzzleMeta implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	public String author;
 	public String title;
 	public String source;
