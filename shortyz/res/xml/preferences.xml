@@ -171,7 +171,12 @@
 			android:defaultValue="false"
 			android:summary="The Hindu Crossword\nhttp://thehindu.com/\n(Please Read the help item below)"
 			android:key="downloadTHC" />
-		<Preference
+		<CheckBoxPreference
+			android:title="The Hindu Crossword Corner"
+			android:defaultValue="false"
+			android:summary="The Hindu Crossword Corner\nhttp://thehinducrosswordcorner.blogspot.in/\n(Please Read the help item below)"
+			android:key="downloadTHCC" />
+				<Preference
 		 	android:title="About These Sources" 
 		 	android:key="aboutScrapes" />
 	</PreferenceScreen>

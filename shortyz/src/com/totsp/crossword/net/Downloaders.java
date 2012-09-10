@@ -139,6 +139,10 @@ public class Downloaders {
 					"nytUsername", ""), prefs.getString("nytPassword", "")));
 		}
 
+		if (prefs.getBoolean("downloadTHCC", true)) {
+			downloaders.add(new THCCDownloader());
+		}
+		
 		if (prefs.getBoolean("downloadTHC", true)) {
 			downloaders.add(new THCDownloader());
 		}
@@ -258,6 +262,9 @@ public class Downloaders {
                         somethingDownloaded = true;
                     }
                 }
+                //else if (d.getName().compareTo("The Hindu Crossword Corner") == 0) {
+                //	downloaders.add(new THCCDownloader());
+                //}
 
                 i++;
             } catch (Exception e) {
