@@ -41,6 +41,7 @@ public interface AndroidVersionUtils {
 				case 11:
 				case 13:
 				case 14:
+				case 15:
 					return (AndroidVersionUtils) Class.forName(
 							"com.totsp.crossword.versions.HoneycombUtil")
 							.newInstance();

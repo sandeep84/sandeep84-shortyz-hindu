@@ -181,7 +181,7 @@
 	android:title="Application Settings">
 	<CheckBoxPreference
 		android:title="Automatic Download"
-		android:defaultValue="true"
+		android:defaultValue="false"
 		android:summary="Download today's puzzles when starting the application"
 		android:key="dlOnStartup"
 	/>

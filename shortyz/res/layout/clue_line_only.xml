@@ -4,8 +4,8 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" 
 		android:text="@string/hello"
-		android:textSize="12dip" 
+		android:textSize="12dip"
 		android:minLines="2"
 		android:maxLines="4"
 		android:textColor="#FFFFFF"
-	/>
+/>

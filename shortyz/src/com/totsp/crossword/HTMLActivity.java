@@ -14,7 +14,6 @@ public class HTMLActivity extends ShortyzActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        utils.holographic(this);
         utils.finishOnHomeButton(this);
         this.setContentView(R.layout.html_view);
 
