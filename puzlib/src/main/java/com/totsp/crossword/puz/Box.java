@@ -3,7 +3,8 @@ package com.totsp.crossword.puz;
 import java.io.Serializable;
 
 public class Box implements Serializable {
-    private String responder;
+	private static final long serialVersionUID = 1L;
+	private String responder;
     private boolean across;
     private boolean cheated;
     private boolean down;

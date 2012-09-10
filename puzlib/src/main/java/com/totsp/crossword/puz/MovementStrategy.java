@@ -10,6 +10,8 @@ public interface MovementStrategy extends Serializable {
 
 	public static final MovementStrategy MOVE_NEXT_ON_AXIS = new MovementStrategy() {
 
+		private static final long serialVersionUID = 1L;
+
 		public Word move(Playboard board, boolean skipCompletedLetters) {
 			if (board.isAcross()) {
 				return board.moveRight(skipCompletedLetters);
@@ -28,6 +30,8 @@ public interface MovementStrategy extends Serializable {
 	};
 
 	public static final MovementStrategy STOP_ON_END = new MovementStrategy() {
+
+		private static final long serialVersionUID = 1L;
 
 		public Word move(Playboard board, boolean skipCompletedLetters) {
 			// This is overly complex, but I am trying to save calls to heavy
@@ -63,6 +67,8 @@ public interface MovementStrategy extends Serializable {
 
 	public static final MovementStrategy MOVE_NEXT_CLUE = new MovementStrategy() {
 		
+		private static final long serialVersionUID = 1L;
+
 		/**
 		 * Moves to the word corresponding to the next clue.  If the current word is the last
 		 * across word, then this moves to the first down word, and if it is the last down word,
@@ -191,6 +197,8 @@ public interface MovementStrategy extends Serializable {
 	};
 
 	public static final MovementStrategy MOVE_PARALLEL_WORD = new MovementStrategy() {
+
+		private static final long serialVersionUID = 1L;
 
 		public Word move(Playboard board, boolean skipCompletedLetters) {
 			Word w = board.getCurrentWord();

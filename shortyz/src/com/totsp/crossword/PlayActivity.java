@@ -123,6 +123,8 @@ public class PlayActivity extends ShortyzActivity {
     private long lastKey;
     private long lastTap = 0;
     private long resumedOn;
+    
+    private boolean useCompactHeader = true;
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -167,6 +169,10 @@ public class PlayActivity extends ShortyzActivity {
                     requestWindowFeature(Window.FEATURE_NO_TITLE);
                 } else {
                     // For SDK11 and above, we'll use a custom ActionBar instead.
+                	// But still, we will disable actionBars (in a crude way) to save area, if we want.
+                	if (useCompactHeader) {
+                		requestWindowFeature(Window.FEATURE_NO_TITLE);
+                	}
                 }
             } else {
                 requestWindowFeature(Window.FEATURE_PROGRESS);
@@ -324,12 +330,14 @@ public class PlayActivity extends ShortyzActivity {
 
             this.clue = (TextView) this.findViewById(R.id.clueLine);
             // Custom ActionBar available only for Honeycomb and above. 
-            // But honeycomb style ActionBar takes too much space. So just skip it. And hide the default ActionBar
-            getActionBar().hide();
-            boolean skipCustomActionBar = true;
-            if(!skipCustomActionBar && clue.getVisibility() != View.GONE && android.os.Build.VERSION.SDK_INT >= 11){
-            	clue.setVisibility(View.GONE);
-            	clue = (TextView) utils.onActionBarCustom(this, R.layout.clue_line_only).findViewById(R.id.clueLine);
+            // But honeycomb style ActionBar takes too much space. So just skip it if you want a compact header
+            if(clue.getVisibility() != View.GONE && android.os.Build.VERSION.SDK_INT >= 11){
+            	if (!useCompactHeader) {
+            		clue.setVisibility(View.GONE);
+            		clue = (TextView) utils.onActionBarCustom(this, R.layout.clue_line_only).findViewById(R.id.clueLine);
+            	} else {
+            		getActionBar().hide();
+            	}
             }
             this.clue.setClickable(true);
             this.clue.setOnClickListener(new OnClickListener() {
@@ -412,14 +420,14 @@ public class PlayActivity extends ShortyzActivity {
         revealPuzzleDialog.setTitle("Reveal Entire Puzzle");
         revealPuzzleDialog.setMessage("Are you sure?");
 
-        revealPuzzleDialog.setButton("OK",
+        revealPuzzleDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
             new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     BOARD.revealPuzzle();
                     render();
                 }
             });
-        revealPuzzleDialog.setButton2("Cancel",
+        revealPuzzleDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
             new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();

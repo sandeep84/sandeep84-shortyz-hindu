@@ -9,7 +9,9 @@ import java.util.List;
 
 
 public class Playboard implements Serializable {
-    private HashMap<Integer, Position> acrossWordStarts = new HashMap<Integer, Position>();
+
+	private static final long serialVersionUID = 1L;
+	private HashMap<Integer, Position> acrossWordStarts = new HashMap<Integer, Position>();
     private HashMap<Integer, Position> downWordStarts = new HashMap<Integer, Position>();
     private MovementStrategy movementStrategy = MovementStrategy.MOVE_NEXT_ON_AXIS;
     private Position highlightLetter = new Position(0, 0);
@@ -627,7 +629,9 @@ public class Playboard implements Serializable {
     }
 
     public static class Clue implements Serializable {
-        public String hint;
+
+		private static final long serialVersionUID = 1L;
+		public String hint;
         public int number;
 
         @Override
@@ -665,7 +669,9 @@ public class Playboard implements Serializable {
     }
 
     public static class Position implements Serializable {
-        public int across;
+
+		private static final long serialVersionUID = 1L;
+		public int across;
         public int down;
 
         protected Position(){
@@ -700,7 +706,9 @@ public class Playboard implements Serializable {
     }
 
     public static class Word implements Serializable {
-        public Position start;
+
+		private static final long serialVersionUID = 1L;
+		public Position start;
         public boolean across;
         public int length;
 

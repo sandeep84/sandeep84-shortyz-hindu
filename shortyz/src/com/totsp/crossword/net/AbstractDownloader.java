@@ -24,7 +24,7 @@ public abstract class AbstractDownloader implements Downloader {
     protected static final Logger LOG = Logger.getLogger("com.totsp.crossword");
     public static File DOWNLOAD_DIR = ShortyzApplication.CROSSWORDS;
     public static final int DEFAULT_BUFFER_SIZE = 1024;
-    protected static final Map<String, String> EMPTY_MAP = Collections.EMPTY_MAP;
+    protected static final Map<String, String> EMPTY_MAP = Collections.emptyMap();
     protected File downloadDirectory;
     protected String baseUrl;
     protected final AndroidVersionUtils utils = AndroidVersionUtils.Factory.getInstance();
