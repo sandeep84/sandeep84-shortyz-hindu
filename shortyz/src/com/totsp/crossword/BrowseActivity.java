@@ -16,12 +16,14 @@ import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -68,7 +70,7 @@ public class BrowseActivity extends ShortyzActivity implements OnItemClickListen
     private NotificationManager nm;
     private View lastOpenedView = null;
     private boolean viewArchive;
-
+  
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         File meta = new File(this.contextFile.getParent(),
@@ -487,7 +489,7 @@ public class BrowseActivity extends ShortyzActivity implements OnItemClickListen
     private void checkDownload() {
         long lastDL = prefs.getLong("dlLast", 0);
 
-        if (prefs.getBoolean("dlOnStartup", true) &&
+        if (prefs.getBoolean("dlOnStartup", false) &&
                 ((System.currentTimeMillis() - (long) (12 * 60 * 60 * 1000)) > lastDL)) {
             this.download(new Date(), null, true);
             prefs.edit()
@@ -642,6 +644,9 @@ public class BrowseActivity extends ShortyzActivity implements OnItemClickListen
     }
 
     private void upgradePreferences() {
+    	
+    	/* I'd rather have user set keyboard style */
+    	/* 
         if (this.prefs.getString("keyboardType", null) == null) {
             if (this.prefs.getBoolean("useNativeKeyboard", false)) {
                 this.prefs.edit()
@@ -664,6 +669,7 @@ public class BrowseActivity extends ShortyzActivity implements OnItemClickListen
                 }
             }
         }
+        */
     }
 
     public static interface Provider<T> {
