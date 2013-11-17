@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 
 public class Puzzle implements Serializable{
-    private String author;
+	private static final long serialVersionUID = 1L;
+	private String author;
     private String copyright;
     private String notes;
     private String title;

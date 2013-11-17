@@ -134,6 +134,14 @@ public class Downloaders {
 					"nytUsername", ""), prefs.getString("nytPassword", "")));
 		}
 
+		if (prefs.getBoolean("downloadTHCC", true)) {
+			downloaders.add(new THCCDownloader());
+		}
+		
+		if (prefs.getBoolean("downloadTHC", true)) {
+			downloaders.add(new THCDownloader());
+		}
+		
 		this.supressMessages = prefs.getBoolean("supressMessages", false);
 	}
 
@@ -247,6 +255,9 @@ public class Downloaders {
                         somethingDownloaded = true;
                     }
                 }
+                //else if (d.getName().compareTo("The Hindu Crossword Corner") == 0) {
+                //	downloaders.add(new THCCDownloader());
+                //}
 
                 i++;
             } catch (Exception e) {
@@ -358,6 +369,7 @@ public class Downloaders {
 				notificationIntent, 0);
 		not.setLatestEventInfo(context, contentTitle,
 				"New puzzles were downloaded.", contentIntent);
+		not.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
 
 		if (this.notificationManager != null) {
 			this.notificationManager.notify(0, not);
@@ -375,6 +387,7 @@ public class Downloaders {
 				notificationIntent, 0);
 		not.setLatestEventInfo(context, contentTitle, puzFile.getName(),
 				contentIntent);
+		not.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
 
 		if (this.notificationManager != null) {
 			this.notificationManager.notify(i, not);

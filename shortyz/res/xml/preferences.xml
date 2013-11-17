@@ -166,7 +166,17 @@
 			android:defaultValue="false"
 			android:summary="Ron &quot;Kegler&quot; Sweet's Cryptic Archive\nhttp://www.lafn.org/~keglerron/kegler.html\n(Please Read the help item below)"
 			android:key="scrapeKegler" />
-		<Preference
+		<CheckBoxPreference
+			android:title="The Hindu Crossword"
+			android:defaultValue="false"
+			android:summary="The Hindu Crossword\nhttp://thehindu.com/\n(Please Read the help item below)"
+			android:key="downloadTHC" />
+		<CheckBoxPreference
+			android:title="The Hindu Crossword Corner"
+			android:defaultValue="false"
+			android:summary="The Hindu Crossword Corner\nhttp://thehinducrosswordcorner.blogspot.in/\n(Please Read the help item below)"
+			android:key="downloadTHCC" />
+				<Preference
 		 	android:title="About These Sources" 
 		 	android:key="aboutScrapes" />
 	</PreferenceScreen>
@@ -184,7 +194,7 @@
 	
 	<CheckBoxPreference
 		android:title="Automatic Download"
-		android:defaultValue="true"
+		android:defaultValue="false"
 		android:summary="Download today's puzzles when starting the application"
 		android:key="dlOnStartup"
 	/>
