@@ -35,7 +35,7 @@ public class THCDownloader extends AbstractDownloader {
     NumberFormat nf = NumberFormat.getInstance();
     
     private static final int NUM_CELLS = 15;
-    private static final int GREY_THRESHOLD = 0xf8;
+    private static final int GREY_THRESHOLD = 0xf0;
 
     private Box[][] boxes = new Box[NUM_CELLS][NUM_CELLS];
     private String author = "";
@@ -135,7 +135,7 @@ public class THCDownloader extends AbstractDownloader {
 		try {
 			String html_string = this.getContent(this.baseUrl + "?date=" + sdf.format(date));
 			
-            Pattern p = Pattern.compile("<h3>MISCELLANEOUS</h3>.*<a\\s*href=\"(.*?)\"\\s*>The Hindu Crossword.*</a>", Pattern.MULTILINE | Pattern.DOTALL);
+            Pattern p = Pattern.compile("MISCELLANEOUS.*<a\\s*href=\"(.*?)\"\\s*>The Hindu Crossword.*</a>", Pattern.MULTILINE | Pattern.DOTALL);
             Matcher m = p.matcher(html_string);
             if (m.find()) {
             	return m.group(1);
